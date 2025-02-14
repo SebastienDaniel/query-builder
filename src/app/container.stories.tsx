@@ -1,3 +1,4 @@
+import { IFilterRule, Operator } from '../types';
 import { Container } from './container';
 
 export default {
@@ -11,4 +12,56 @@ export default {
 
 export const Default = {
   args: {},
+};
+
+export const LotsOfFilters = {
+  args: {
+    initialFilterRules: [
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+      {
+        fieldId: 'contact_type',
+        operator: Operator.OPERATOR_EQUALS,
+        value: 'partner',
+      },
+    ] as IFilterRule[],
+  },
 };

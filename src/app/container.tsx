@@ -8,9 +8,13 @@ import styles from './container.module.css';
 
 const debug = debugFactory('Container');
 
-export function Container() {
+interface IContainerProps {
+  readonly initialFilterRules?: Array<IFilterRule>;
+}
+
+export function Container({ initialFilterRules }: IContainerProps) {
   const fields = FIELDS;
-  const [filters, setFilters] = useState<IFilterRule[]>([]);
+  const [filters, setFilters] = useState<IFilterRule[]>(initialFilterRules ?? []);
 
   const addFilterRule = useCallback((filterRule: IFilterRule) => {
     debug('addFilterRule', filterRule);

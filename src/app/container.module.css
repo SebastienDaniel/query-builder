@@ -1,6 +1,6 @@
 .container {
   border: 1px solid gray;
-  padding: 16px;
+  padding: var(--spaceXLarge);
   position: relative;
 
   display: flex;
@@ -11,10 +11,16 @@
   gap: 12px;
 }
 
+.container {
+  > :last-child {
+    align-self: flex-start;
+  }
+}
+
 .container__label {
   background-color: #fff;
-  padding: 6px;
+  padding: var(--spaceSmall);
   position: absolute;
   top: -16px;
-  left: 20px;
+  left: var(--spaceXLarge);
 }

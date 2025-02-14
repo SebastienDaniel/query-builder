@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "jsx": "react",
+    "outDir": "./dist",
+
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "plugins": [
+      {"name": "typescript-plugin-css-modules"}
+    ],
+  },
+  "include": ["src/**/*", "src/types.ts", "src/global.d.ts"]
+}

@@ -1,0 +1,9 @@
+.inputSizer {
+  height: 0;
+  overflow-y: hidden;
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+}

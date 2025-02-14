@@ -1,0 +1,51 @@
+import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
+import styles from './resizable-input.module.css';
+
+export function ResizableInput(
+  props: InputHTMLAttributes<HTMLInputElement> & {
+    value: string;
+    onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
+    minWidth?: number;
+  },
+) {
+  const spanRef = useRef<HTMLSpanElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [width, setWidth] = useState(0);
+  const [computedStyles, setComputedStyles] = useState<React.CSSProperties>({});
+
+  useEffect(() => {
+    if (spanRef.current && inputRef.current) {
+      const styles = window.getComputedStyle(inputRef.current);
+      setComputedStyles({
+        lineHeight: styles.lineHeight,
+        fontSize: styles.fontSize,
+        fontWeight: styles.fontWeight,
+        fontFamily: styles.fontFamily,
+        fontStretch: styles.fontStretch,
+        paddingLeft: styles.paddingLeft,
+        paddingRight: styles.paddingRight,
+        borderWidth: styles.borderWidth,
+      });
+    }
+  }, [spanRef.current, inputRef.current]);
+
+  useEffect(() => {
+    if (spanRef.current) {
+      const scrollWidth = spanRef.current.scrollWidth;
+      setWidth(scrollWidth + 12);
+    }
+  }, [inputRef.current?.value, props.value]);
+
+  return (
+    <>
+      <input
+        {...props}
+        style={{ ...props.style, width, minWidth: props.minWidth }}
+        ref={inputRef}
+      />
+      <span ref={spanRef} style={computedStyles} className={styles.inputSizer}>
+        {inputRef?.current?.value ?? props.value}
+      </span>
+    </>
+  );
+}

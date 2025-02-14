@@ -8,7 +8,8 @@ export function FilterRuleItemRemove({
   const selfRef = useRef(null);
 
   function handleKeydown(e: React.KeyboardEvent) {
-    if (e.key === 'Enter') {
+    console.log(e);
+    if (e.key === 'Enter' || e.key === 'Backspace') {
       onFilterRemoved();
     }
   }

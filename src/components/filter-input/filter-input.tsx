@@ -57,7 +57,7 @@ export function FilterInput({ fields, onSubmit, placeholder }: IFilterInputProps
         <ComboboxInput
           value={value}
           autocomplete={false}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
           className={styles.filterInput__input}
           tabIndex={0}
           placeholder={placeholder}

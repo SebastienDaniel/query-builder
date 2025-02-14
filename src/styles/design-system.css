@@ -1,4 +1,35 @@
 :root {
+  --fontSizeSmall: 10px;
+  --fontSizeMedium: 14px;
+  --fontSizeLarge: 18px;
+
+  --lineHeightSmall: 14px;
+  --lineHeightMedium: 20px;
+  --lineHeightLarge: 28px;
+
   --spaceSmall: 4px;
   --spaceMedium: 8px;
+  --spaceLarge: 16px;
+  --spaceXLarge: 24px;
+
+  --colorFont: rgb(62, 52, 76);
+  --colorFontLight: rgb(128, 112, 143);
+  --colorFontHighlight: rgb(101, 89, 197);
+
+  --colorInputBorder: rgb(62, 52, 70);
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  color: var(--colorFont);
+}
+
+input {
+  border: 1px solid var(--colorInputBorder);
+  color: var(--colorFont);
+
+  &:focus {
+    outline: 1px solid var(--colorFontHighlight);
+  }
 }

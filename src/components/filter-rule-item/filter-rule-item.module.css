@@ -1,0 +1,94 @@
+.filterRuleItem {
+  display: flex;
+  gap: none;
+  user-select: none;
+
+  [data-reach-combobox] {
+    height: 100%;
+  }
+
+  input {
+    box-sizing: border-box;
+    border: none;
+    height: 100%;
+    width: 100%;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+  > :first-child {
+    border-radius: 3px 0 0 3px;
+    border-left: 1px solid #ddd;
+  }
+
+  > :last-child {
+    border-radius: 0 3px 3px 0;
+    border-right: 1px solid #ddd;
+  }
+}
+
+.filterRuleItem__filter,
+.filterRuleItem__operator,
+.filterRuleItem__value,
+.filterRuleItem__remove {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+  white-space: nowrap;
+}
+
+.filterRuleItem__filter {
+  padding: var(--spaceSmall);
+  line-height: var(--lineHeightMedium);
+  font-size: var(--fontSizeMedium);
+  color: var(--colorFont);
+}
+
+.filterRuleItem__operator {
+  input {
+    color: var(--colorFontLight);
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background-color: rgb(246, 245, 255);
+    }
+  }
+}
+
+.filterRuleItem__value {
+  input {
+    color: var(--colorFontHighlight);
+    line-height: var(--lineHeightMedium);
+    font-size: var(--fontSizeMedium);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background-color: rgb(246, 245, 255);
+    }
+  }
+}
+
+.filterRuleItem__remove {
+  width: 24px;
+  font-size: var(--fontSizeSmall);
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background-color: rgb(253, 216, 216);
+    border: 1px solid rgb(175, 101, 101);
+    outline: 0;
+  }
+}

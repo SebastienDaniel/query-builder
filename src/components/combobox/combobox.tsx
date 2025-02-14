@@ -79,7 +79,7 @@ export function CustomCombobox({
   useEffect(() => {
     if (spanRef.current) {
       const scrollWidth = spanRef.current.scrollWidth;
-      setWidth(scrollWidth);
+      setWidth(scrollWidth + 6);
     }
   }, [value]);
 

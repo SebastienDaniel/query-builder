@@ -37,7 +37,7 @@ export function ResizableInput(props: IResizableInputProps) {
   useEffect(() => {
     if (spanRef.current) {
       const scrollWidth = spanRef.current.scrollWidth;
-      setWidth(scrollWidth + 12);
+      setWidth(scrollWidth + 6);
     }
   }, [inputRef.current?.value, props.value]);
 
@@ -46,6 +46,7 @@ export function ResizableInput(props: IResizableInputProps) {
       <input
         {...props}
         style={{ ...props.style, width, minWidth: props.minWidth }}
+        width={width}
         ref={inputRef}
       />
       <span ref={spanRef} style={computedStyles} className={styles.inputSizer}>

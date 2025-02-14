@@ -1,0 +1,20 @@
+.container {
+  border: 1px solid gray;
+  padding: 16px;
+  position: relative;
+
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  min-width: 400px;
+  max-width: 80vw;
+  gap: 12px;
+}
+
+.container__label {
+  background-color: #fff;
+  padding: 6px;
+  position: absolute;
+  top: -16px;
+  left: 20px;
+}

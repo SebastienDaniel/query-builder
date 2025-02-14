@@ -43,5 +43,5 @@ export interface IFieldOption {
 export interface IFilterRule {
   readonly fieldId: string;
   readonly operator: Operator;
-  readonly value?: string | number;
+  readonly value: string;
 }

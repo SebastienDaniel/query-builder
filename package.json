@@ -44,7 +44,9 @@
   },
   "dependencies": {
     "@reach/combobox": "^0.18.0",
+    "@types/debug": "^4.1.12",
     "classnames": "^2.5.1",
+    "debug": "^4.4.0",
     "match-sorter": "^8.0.0",
     "react": "^19.0.0",
     "typescript": "^5.7.3",

@@ -1,13 +1,18 @@
 import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import styles from './resizable-input.module.css';
 
-export function ResizableInput(
-  props: InputHTMLAttributes<HTMLInputElement> & {
-    value: string;
-    onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
-    minWidth?: number;
-  },
-) {
+interface IResizableInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  value: string;
+  onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
+  minWidth?: number;
+}
+
+/**
+ * A ResizableInput is a text input that automatically resizes to fit its content. It also accepts a
+ * minWidth prop to set the minimum width of the input, used to override browser default input widths
+ *
+ */
+export function ResizableInput(props: IResizableInputProps) {
   const spanRef = useRef<HTMLSpanElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [width, setWidth] = useState(0);

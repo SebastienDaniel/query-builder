@@ -20,12 +20,14 @@ interface IFilterInputProps {
   readonly onSubmit: (filter: IFilterRule) => void;
 }
 
-// filterInput
-// uses a combination of CustomCombobox to sequentially
-// capture the parts of a FilterRule, which requires a filter, an operator and optionally a value
-// we can determine from the FilterType if a value is required
-// once all parts are captured, we can pass the filter as a IFilterRule to the parent component
-
+/**
+ * FilterInput is a component that provides a search and selection interface
+ * for filtering fields. It uses a combobox input to allow users to type and
+ * search for specific fields from a given list. Upon selection, it triggers
+ * the onSubmit callback with the selected field's default rule or constructs
+ * a rule using the field's default operator if no default rule is provided.
+ *
+ */
 export function FilterInput({ fields, onSubmit, placeholder, focusClassName }: IFilterInputProps) {
   const [value, setValue] = useState('');
   const filteredFields = matchSorter(fields, value, { keys: ['name'] });

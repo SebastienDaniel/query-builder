@@ -1,4 +1,4 @@
-import { Operator } from "../types";
+import { Operator } from '../types';
 
 export function operatorSupportsValue(operator: Operator) {
   return (

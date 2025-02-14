@@ -1,0 +1,5 @@
+.filterInput__input {
+  line-height: var(--lineHeightMedium);
+  font-size: var(--fontSizeMedium);
+  padding: var(--spaceSmall);
+}

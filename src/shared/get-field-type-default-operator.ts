@@ -1,4 +1,4 @@
-import { FieldType, Operator } from "../types";
+import { FieldType, Operator } from '../types';
 
 export function getFieldTypeDefaultOperator(fieldType: FieldType): Operator {
   switch (fieldType) {

@@ -1,5 +1,5 @@
 import debugFactory from 'debug';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FilterInput } from '../components/filter-input/filter-input';
 import { FilterRuleList } from '../components/filter-rule-list/filter-rule-list';
 import { FIELDS } from '../data-mocks/fields';
@@ -12,10 +12,43 @@ interface IContainerProps {
 
 export function Container(props: IContainerProps) {
   const { filters, addFilterRule, removeFilterByIndex, updateFilterByIndex } = useFilters(props);
+  const selfRef = useRef<HTMLDivElement>(null);
   const fields = FIELDS;
 
+  function getFocusTargets() {
+    if (selfRef.current) {
+      return selfRef.current.querySelectorAll(`[tabIndex="0"]`);
+    }
+
+    return [];
+  }
+
+  function focusNextFocusable() {
+    const focusTargets = getFocusTargets() as NodeListOf<HTMLDivElement>;
+    const currentFocusElement = document.activeElement;
+    const currentIndex = Array.prototype.indexOf.call(focusTargets, currentFocusElement);
+    const nextFocusElement = focusTargets[currentIndex + 1];
+    nextFocusElement?.focus();
+  }
+
+  function focusPreviousFocusable() {
+    const focusTargets = getFocusTargets() as NodeListOf<HTMLDivElement>;
+    const currentFocusElement = document.activeElement;
+    const currentIndex = Array.prototype.indexOf.call(focusTargets, currentFocusElement);
+    const previousFocusElement = focusTargets[currentIndex - 1];
+    previousFocusElement?.focus();
+  }
+
+  function onKeydown(e: React.KeyboardEvent) {
+    if (e.key === 'ArrowLeft') {
+      focusPreviousFocusable();
+    } else if (e.key === 'ArrowRight') {
+      focusNextFocusable();
+    }
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onKeyDown={onKeydown} ref={selfRef}>
       <label className={styles.container__label}>Filters</label>
       <FilterRuleList
         filters={filters}

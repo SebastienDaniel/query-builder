@@ -5,7 +5,6 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from '@reach/combobox';
-import '@reach/combobox/styles.css';
 import classNames from 'classnames';
 import { matchSorter } from 'match-sorter';
 import React, { useState } from 'react';
@@ -28,7 +27,6 @@ interface IFilterInputProps {
 // once all parts are captured, we can pass the filter as a IFilterRule to the parent component
 
 export function FilterInput({ fields, onSubmit, placeholder, focusClassName }: IFilterInputProps) {
-  const [isFocused, setIsFocused] = useState(false);
   const [value, setValue] = useState('');
   const filteredFields = matchSorter(fields, value, { keys: ['name'] });
 
@@ -64,10 +62,8 @@ export function FilterInput({ fields, onSubmit, placeholder, focusClassName }: I
           tabIndex={0}
           placeholder={placeholder}
           data-testid={COMBOBOX_INPUT_TEST_ID}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setTimeout(() => setIsFocused(false), 100)}
         />
-        {isFocused && filteredFields.length > 0 && (
+        {filteredFields.length > 0 && (
           <ComboboxPopover data-testid={COMBOBOX_POPOVER_TEST_ID}>
             <ComboboxList>
               {filteredFields.map((field, index) => (

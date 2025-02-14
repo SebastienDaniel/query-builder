@@ -1,5 +1,4 @@
 import { FIELDS } from '../../data-mocks/fields';
-import { IFilterRule } from '../../types';
 import { FilterInput } from './filter-input';
 
 export default {
@@ -14,6 +13,6 @@ export default {
 export const Basic = {
   args: {
     fields: FIELDS,
-    onSubmit: (v: IFilterRule) => window.alert(JSON.stringify(v)),
+    onSubmit: () => null,
   },
 };

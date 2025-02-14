@@ -6,7 +6,6 @@ import {
   ComboboxPopover,
 } from '@reach/combobox';
 import '@reach/combobox/styles.css';
-import classNames from 'classnames';
 import { matchSorter } from 'match-sorter';
 import React, { useEffect, useRef, useState } from 'react';
 import { COMBOBOX_INPUT_TEST_ID, COMBOBOX_POPOVER_TEST_ID } from '../../test/data-test-ids';
@@ -17,14 +16,12 @@ export type IComboboxOption = { id: string; text: string; subtext?: string };
 
 export interface IComboboxProps {
   readonly initialValue?: string;
-  readonly inputClassName?: string;
   readonly options: Array<IComboboxOption>;
   readonly openOnFocus?: boolean;
   readonly autofocus?: boolean;
   readonly disabled?: boolean;
   readonly disableFiltering?: boolean;
   readonly placeholder?: string;
-  readonly onlyAvailableOptions?: boolean; // TODO: needs to be implemented
   readonly onSubmit: (value: IComboboxOption) => void;
 }
 
@@ -33,7 +30,6 @@ export function CustomCombobox({
   openOnFocus,
   autofocus,
   disabled,
-  inputClassName,
   placeholder,
   initialValue,
   disableFiltering,
@@ -99,8 +95,7 @@ export function CustomCombobox({
         disabled={disabled}
         autoFocus={autofocus}
         autocomplete={false}
-        // TODO: not a great pattern... this couples FilterList concepts to this component
-        className={classNames(styles.combobox__input, inputClassName)}
+        className={styles.combobox__input}
         tabIndex={0}
         placeholder={placeholder}
         ref={inputRef}
@@ -110,7 +105,7 @@ export function CustomCombobox({
       <span className={styles.inputSizer} style={computedStyles} ref={spanRef}>
         {value}
       </span>
-      {filteredOptions.length > 0 && ( // TODO: control visibility based on focus, and an empty state???
+      {filteredOptions.length > 0 && (
         <ComboboxPopover style={{ minWidth: 150 }} data-testid={COMBOBOX_POPOVER_TEST_ID}>
           <ComboboxList>
             {filteredOptions.map((option, index) => (

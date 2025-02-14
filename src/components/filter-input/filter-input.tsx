@@ -5,7 +5,6 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from '@reach/combobox';
-import classNames from 'classnames';
 import { matchSorter } from 'match-sorter';
 import React, { useState } from 'react';
 import { getFieldTypeDefaultOperator } from '../../shared/get-field-type-default-operator';
@@ -16,7 +15,6 @@ import styles from './filter-input.module.css';
 interface IFilterInputProps {
   readonly fields: IFieldDefinition[];
   readonly placeholder?: string;
-  readonly focusClassName?: string;
   readonly onSubmit: (filter: IFilterRule) => void;
 }
 
@@ -28,7 +26,7 @@ interface IFilterInputProps {
  * a rule using the field's default operator if no default rule is provided.
  *
  */
-export function FilterInput({ fields, onSubmit, placeholder, focusClassName }: IFilterInputProps) {
+export function FilterInput({ fields, onSubmit, placeholder }: IFilterInputProps) {
   const [value, setValue] = useState('');
   const filteredFields = matchSorter(fields, value, { keys: ['name'] });
 
@@ -60,7 +58,7 @@ export function FilterInput({ fields, onSubmit, placeholder, focusClassName }: I
           value={value}
           autocomplete={false}
           onChange={(e) => setValue(e.target.value)}
-          className={classNames(focusClassName, styles.filterInput__input)}
+          className={styles.filterInput__input}
           tabIndex={0}
           placeholder={placeholder}
           data-testid={COMBOBOX_INPUT_TEST_ID}

@@ -7,7 +7,6 @@ import { FilterRuleItemValue } from './filter-rule-item-value';
 import styles from './filter-rule-item.module.css';
 
 export interface IFilterItemProps {
-  readonly focusClassName: string;
   readonly filter: IFilterRule;
   readonly onFilterUpdated: (updatedFilter: IFilterRule) => void;
   readonly onFilterRemoved: () => void;
@@ -16,7 +15,6 @@ export interface IFilterItemProps {
 
 export function FilterRuleItem({
   filter,
-  focusClassName,
   autoFocusTarget,
   onFilterRemoved,
   onFilterUpdated,
@@ -33,7 +31,6 @@ export function FilterRuleItem({
       <div className={styles.filterRuleItem__filter}>{fieldDefinition?.name}</div>
 
       <FilterRuleItemOperator
-        focusClassName={focusClassName}
         filter={filter}
         fieldDefinition={fieldDefinition}
         onSubmit={(operator) => onFilterUpdated({ ...filter, operator })}
@@ -41,7 +38,6 @@ export function FilterRuleItem({
       />
 
       <FilterRuleItemValue
-        focusClassName={focusClassName}
         fieldDefinition={fieldDefinition}
         operator={filter.operator}
         autofocus={autoFocusTarget === 'value'}
@@ -50,7 +46,7 @@ export function FilterRuleItem({
         onSubmit={(value) => onFilterUpdated({ ...filter, value })}
       />
 
-      <FilterRuleItemRemove onFilterRemoved={onFilterRemoved} focusClassName={focusClassName} />
+      <FilterRuleItemRemove onFilterRemoved={onFilterRemoved} />
     </div>
   );
 }

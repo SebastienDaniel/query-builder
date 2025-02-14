@@ -4,8 +4,6 @@ import { IFilterRule } from '../../types';
 import { FilterRuleItem } from '../filter-rule-item/filter-rule-item';
 import styles from './filter-rule-list.module.css';
 
-const FOCUS_CLASS_NAME = 'iCanBeFocused';
-
 interface IFilterRuleListProps {
   readonly filters: IFilterRule[];
   readonly removeFilterByIndex: (index: number) => void;
@@ -29,7 +27,7 @@ export function FilterRuleList({
 
   function getFocusTargets() {
     if (selfRef.current) {
-      return selfRef.current.querySelectorAll(`.${FOCUS_CLASS_NAME}[tabIndex="0"]`);
+      return selfRef.current.querySelectorAll(`[tabIndex="0"]`);
     }
 
     return [];
@@ -64,7 +62,6 @@ export function FilterRuleList({
       {filters.map((f, i) => (
         <FilterRuleItem
           key={i}
-          focusClassName={FOCUS_CLASS_NAME}
           filter={f}
           onFilterRemoved={() => removeFilterByIndex(i)}
           onFilterUpdated={(filter) => {

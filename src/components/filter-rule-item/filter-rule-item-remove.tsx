@@ -1,12 +1,10 @@
-import classNames from 'classnames';
 import React, { useRef } from 'react';
 import { IFilterItemProps } from './filter-rule-item';
 import styles from './filter-rule-item.module.css';
 
 export function FilterRuleItemRemove({
   onFilterRemoved,
-  focusClassName,
-}: Pick<IFilterItemProps, 'onFilterRemoved' | 'focusClassName'>) {
+}: Pick<IFilterItemProps, 'onFilterRemoved'>) {
   const selfRef = useRef(null);
 
   function handleKeydown(e: React.KeyboardEvent) {
@@ -17,7 +15,7 @@ export function FilterRuleItemRemove({
 
   return (
     <div
-      className={classNames(styles.filterRuleItem__remove, focusClassName)}
+      className={styles.filterRuleItem__remove}
       onClick={onFilterRemoved}
       tabIndex={0}
       ref={selfRef}

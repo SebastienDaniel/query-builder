@@ -9,13 +9,11 @@ interface IFilterRuleItemOperatorProps {
   filter: IFilterRule;
   fieldDefinition: IFieldDefinition;
   onSubmit: (operator: Operator) => void;
-  focusClassName: string;
   autofocus?: boolean;
 }
 export function FilterRuleItemOperator({
   filter,
   fieldDefinition,
-  focusClassName,
   autofocus,
   onSubmit,
 }: IFilterRuleItemOperatorProps) {
@@ -28,7 +26,6 @@ export function FilterRuleItemOperator({
   return (
     <div className={styles.filterRuleItem__operator}>
       <FilterRuleCombobox
-        focusClassName={focusClassName}
         options={options}
         onSubmit={(v) => (v ? onSubmit(parseInt(v.id, 10)) : onSubmit(Operator.OPERATOR_INVALID))}
         autofocus={autofocus}

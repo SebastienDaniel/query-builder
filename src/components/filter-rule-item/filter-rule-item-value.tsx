@@ -6,7 +6,6 @@ import { FilterRuleCombobox, IFilterRuleComboboxProps } from './filter-rule-comb
 import styles from './filter-rule-item.module.css';
 
 interface IFilterRuleItemValueProps {
-  focusClassName: string;
   fieldDefinition: IFieldDefinition;
   operator: Operator;
   value: string;
@@ -16,7 +15,6 @@ interface IFilterRuleItemValueProps {
 }
 
 export function FilterRuleItemValue({
-  focusClassName,
   fieldDefinition,
   operator,
   autofocus,
@@ -37,7 +35,6 @@ export function FilterRuleItemValue({
           text: o.text,
         }))}
         fieldDefinition={fieldDefinition}
-        focusClassName={focusClassName}
         onSubmit={(v) => onSubmit(v.id)}
         autofocus={autofocus}
         initialValue={value}
@@ -47,7 +44,6 @@ export function FilterRuleItemValue({
     if (fieldDefinition.fieldType === FieldType.FIELD_TYPE_STRING) {
       InputComponent = (
         <ResizableInput
-          className={focusClassName}
           tabIndex={0}
           autoFocus={autofocus}
           value={value}
@@ -58,7 +54,6 @@ export function FilterRuleItemValue({
     } else if (fieldDefinition.fieldType === FieldType.FIELD_TYPE_NUMBER) {
       InputComponent = (
         <ResizableInput
-          className={focusClassName}
           tabIndex={0}
           autoFocus={autofocus}
           type='number'

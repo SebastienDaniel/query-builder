@@ -6,14 +6,33 @@ import { FIELDS } from '../data-mocks/fields';
 import { IFilterRule } from '../types';
 import styles from './container.module.css';
 
-const debug = debugFactory('Container');
-
 interface IContainerProps {
   readonly initialFilterRules?: Array<IFilterRule>;
 }
 
-export function Container({ initialFilterRules }: IContainerProps) {
+export function Container(props: IContainerProps) {
+  const { filters, addFilterRule, removeFilterByIndex, updateFilterByIndex } = useFilters(props);
   const fields = FIELDS;
+
+  return (
+    <div className={styles.container}>
+      <label className={styles.container__label}>Filters</label>
+      <FilterRuleList
+        filters={filters}
+        removeFilterByIndex={removeFilterByIndex}
+        updateFilterByIndex={updateFilterByIndex}
+      />
+      <FilterInput
+        fields={fields}
+        onSubmit={addFilterRule}
+        placeholder={filters.length === 0 ? 'Add a filter...' : ''}
+      />
+    </div>
+  );
+}
+
+const debug = debugFactory('useFilters');
+function useFilters({ initialFilterRules }: IContainerProps) {
   const [filters, setFilters] = useState<IFilterRule[]>(initialFilterRules ?? []);
 
   const addFilterRule = useCallback((filterRule: IFilterRule) => {
@@ -33,19 +52,10 @@ export function Container({ initialFilterRules }: IContainerProps) {
     setFilters((prev) => prev.map((f, i) => (i === index ? filter : f)));
   }, []);
 
-  return (
-    <div className={styles.container}>
-      <label className={styles.container__label}>Filters</label>
-      <FilterRuleList
-        filters={filters}
-        removeFilterByIndex={removeFilterByIndex}
-        updateFilterByIndex={updateFilterByIndex}
-      />
-      <FilterInput
-        fields={fields}
-        onSubmit={addFilterRule}
-        placeholder={filters.length === 0 ? 'Add a filter...' : ''}
-      />
-    </div>
-  );
+  return {
+    filters,
+    addFilterRule,
+    removeFilterByIndex,
+    updateFilterByIndex,
+  };
 }

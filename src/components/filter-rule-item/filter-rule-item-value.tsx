@@ -6,12 +6,12 @@ import { FilterRuleCombobox, IFilterRuleComboboxProps } from './filter-rule-comb
 import styles from './filter-rule-item.module.css';
 
 interface IFilterRuleItemValueProps {
-  fieldDefinition: IFieldDefinition;
-  operator: Operator;
-  value: string;
-  options?: IFieldDefinition['options'];
-  autofocus?: boolean;
-  onSubmit: (value: string) => void;
+  readonly fieldDefinition: IFieldDefinition;
+  readonly operator: Operator;
+  readonly value: string;
+  readonly options?: IFieldDefinition['options'];
+  readonly autofocus?: boolean;
+  readonly onSubmit: (value: string) => void;
 }
 
 export function FilterRuleItemValue({
@@ -71,7 +71,7 @@ function InputCombobox({
   fieldDefinition,
   ...props
 }: IFilterRuleComboboxProps & {
-  fieldDefinition: IFieldDefinition;
+  readonly fieldDefinition: IFieldDefinition;
 }) {
   return (
     <FilterRuleCombobox

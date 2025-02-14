@@ -20,7 +20,6 @@ export function FilterRuleItem({
   onFilterUpdated,
 }: IFilterItemProps) {
   const fieldDefinition = useMemo(() => getFieldDefinitionById(filter.fieldId), [filter.fieldId]);
-  const value = filter.value;
 
   if (!fieldDefinition) {
     return null;
@@ -41,7 +40,7 @@ export function FilterRuleItem({
         fieldDefinition={fieldDefinition}
         operator={filter.operator}
         autofocus={autoFocusTarget === 'value'}
-        value={value}
+        value={filter.value}
         options={fieldDefinition?.options}
         onSubmit={(value) => onFilterUpdated({ ...filter, value })}
       />

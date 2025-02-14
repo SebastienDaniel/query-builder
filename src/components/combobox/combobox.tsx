@@ -19,9 +19,7 @@ export interface IComboboxProps {
   readonly options: Array<IComboboxOption>;
   readonly openOnFocus?: boolean;
   readonly autofocus?: boolean;
-  readonly disabled?: boolean;
   readonly disableFiltering?: boolean;
-  readonly placeholder?: string;
   readonly onSubmit: (value: IComboboxOption) => void;
 }
 
@@ -29,8 +27,6 @@ export function CustomCombobox({
   options,
   openOnFocus,
   autofocus,
-  disabled,
-  placeholder,
   initialValue,
   disableFiltering,
   onSubmit,
@@ -92,12 +88,10 @@ export function CustomCombobox({
       <ComboboxInput
         value={value}
         onChange={handleManualChange}
-        disabled={disabled}
         autoFocus={autofocus}
         autocomplete={false}
         className={styles.combobox__input}
         tabIndex={0}
-        placeholder={placeholder}
         ref={inputRef}
         style={{ width }}
         data-testid={COMBOBOX_INPUT_TEST_ID}

@@ -2,9 +2,9 @@ import React, { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import styles from './resizable-input.module.css';
 
 interface IResizableInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  value: string;
-  onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
-  minWidth?: number;
+  readonly value: string;
+  readonly onChange: InputHTMLAttributes<HTMLInputElement>['onChange'];
+  readonly minWidth?: number;
 }
 
 /**
